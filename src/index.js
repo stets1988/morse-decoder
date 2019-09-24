@@ -41,43 +41,43 @@ const MORSE_TABLE = {
 
 function decode(expr) {
 var result = "";
-var newarr =  Object.entries(MORSE_TABLE);  
+var arr_morse_table =  Object.entries(MORSE_TABLE);  
 	for(var i=0; i < expr.length;)
 	{	
-		var substr = expr.slice((i),(i+10));
-			for(var j=0; j < substr.length;)
+		var substr10 = expr.slice((i),(i+10));
+			for(var j=0; j < substr10.length;)
 			{
-				var substr2 = substr.slice(j,(j+2));
+				var substr2 = substr10.slice(j,(j+2));
 					if(substr2 == "00")
 					{
-					substr3="";
+					substr2_morse="";
 					}
 					if(substr2 == "10")
 					{
-					substr3=substr3+".";
+					substr2_morse=substr2_morse+".";
 					}
 					if(substr2 == "11")
 					{
-					substr3=substr3+"-";	
+					substr2_morse=substr2_morse+"-";	
 					}
 					if(substr2 == "**")
 					{
-					substr3="**";
+					substr2_morse="**";
 					}
 			j+=2;
 			}
-		for(var k=0; k<newarr.length; k++)
+		for(var k=0; k<arr_morse_table.length; k++)
 		{	
-			if(substr3 == (newarr[k][0]))
+			if(substr2_morse == (arr_morse_table[k][0]))
 			{
-				result=result+newarr[k][1];
-				substr3="";
+				result=result+arr_morse_table[k][1];
+				substr2_morse="";
 			}
 		}
-			if(substr3 == "**")
+			if(substr2_morse == "**")
 			{
 				result=result+" ";
-				substr3="";
+				substr2_morse="";
 			}
 						
 	i+=10;
