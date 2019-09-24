@@ -38,11 +38,11 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-var k;
-var expr="";
-var substr3 = "";
-var substr4 = "";
+
 function decode(expr) {
+var k;
+var substr3 = "";
+var result = "";
 var newarr =  Object.entries(MORSE_TABLE);  
 	for(var i=0; i < expr.length;)
 	{	
@@ -68,22 +68,21 @@ var newarr =  Object.entries(MORSE_TABLE);
 					}
 			j+=2;
 			}
-		for(k=0; k<newarr.length; k++)
+		for(var k=0; k<newarr.length; k++)
 		{	
 			if(substr3 == (newarr[k][0]+""))
 			{
-				substr4=substr4+newarr[k][1];
+				result=result+newarr[k][1];
 			}
 		}
 			if(substr3 == "")
 			{
-				substr4=substr4+" ";
+				result=result+" ";
 			}
 	i+=10;
 	}
-return substr4;
+return result;
 }
 module.exports = {
     decode
 }
-//decode();
