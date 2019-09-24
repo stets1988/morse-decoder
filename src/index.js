@@ -40,8 +40,6 @@ const MORSE_TABLE = {
 
 
 function decode(expr) {
-var k;
-var substr3 = "";
 var result = "";
 var newarr =  Object.entries(MORSE_TABLE);  
 	for(var i=0; i < expr.length;)
@@ -64,21 +62,24 @@ var newarr =  Object.entries(MORSE_TABLE);
 					}
 					if(substr2 == "**")
 					{
-					substr3="";
+					substr3="**";
 					}
 			j+=2;
 			}
 		for(var k=0; k<newarr.length; k++)
 		{	
-			if(substr3 == (newarr[k][0]+""))
+			if(substr3 == (newarr[k][0]))
 			{
 				result=result+newarr[k][1];
+				substr3="";
 			}
 		}
-			if(substr3 == "")
+			if(substr3 == "**")
 			{
 				result=result+" ";
+				substr3="";
 			}
+						
 	i+=10;
 	}
 return result;
